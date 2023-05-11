@@ -2,10 +2,10 @@ import { setupLayouts } from "virtual:generated-layouts";
 import generatedRoutes from "virtual:generated-pages";
 import { ViteSSG } from "vite-ssg";
 
-import App from "./App.vue";
-import type { UserModule } from "./types";
+import App from "~/App.vue";
+import type { UserModule } from "~/types";
 
-import "./style.css";
+import "~/style.css";
 
 const routes = setupLayouts(generatedRoutes);
 

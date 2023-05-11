@@ -1,8 +1,8 @@
 <script lang="tsx">
 import { defineComponent } from "vue";
 
-import vueSvg from "../assets/vue.svg?url";
-import HelloWorld from "../components/HelloWorld.vue";
+import vueSvg from "~/assets/vue.svg?url";
+import HelloWorld from "~/components/HelloWorld.vue";
 
 export default defineComponent({
     render() {
