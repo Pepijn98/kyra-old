@@ -1,0 +1,36 @@
+{
+    "typescript.tsdk": "node_modules/typescript/lib",
+    "git.ignoreLimitWarning": true,
+    "eslint.enable": true,
+    "editor.codeActionsOnSave": {
+        "source.fixAll.eslint": true
+    },
+    "eslint.validate": ["javascript", "typescript", "vue"],
+    "files.associations": {
+        ".babelrc": "jsonc",
+        ".eslintrc": "jsonc",
+        ".prettierrc": "jsonc",
+        ".stylelintrc": "jsonc",
+        ".dockerignore": "ignore",
+        ".prettierignore": "ignore",
+        ".eslintignore": "ignore",
+        ".stylelintignore": "ignore",
+        ".sentryclirc": "ini"
+    },
+    "files.watcherExclude": {
+        "**/node_modules/**": true,
+        "**/dist/**": true,
+        "**/static/**": true
+    },
+    "search.exclude": {
+        ".git": true,
+        ".eslintcache": true,
+        "dist": true,
+        "node_modules": true,
+        "npm-debug.log.*": true,
+        "test/**/__snapshots__": true,
+        "package-lock.json": true,
+        "yarn.lock": true,
+        "pnpm-lock.yaml": true
+    }
+}
