@@ -1,8 +1,8 @@
-
 <script lang="tsx">
 import { defineComponent } from "vue";
-import HelloWorld from "../components/HelloWorld.vue";
-import vueSvg from "../assets/vue.svg?url";
+
+import vueSvg from "~/assets/vue.svg?url";
+import HelloWorld from "~/components/HelloWorld.vue";
 
 export default defineComponent({
     render() {
@@ -18,9 +18,9 @@ export default defineComponent({
                 </div>
                 <HelloWorld msg="Vite + Vue" />
             </>
-        )
+        );
     }
-})
+});
 </script>
 
 <style lang="css" scoped>
