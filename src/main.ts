@@ -3,7 +3,7 @@ import generatedRoutes from "virtual:generated-pages";
 import { ViteSSG } from "vite-ssg";
 
 import App from "~/App.vue";
-import type { UserModule } from "~/types";
+import { type UserModule } from "~/types";
 
 import "~/style.css";
 
