@@ -1,6 +1,6 @@
 <template>
     <div>
-        <h1>Index</h1>
+
     </div>
 </template>
 
@@ -11,9 +11,3 @@
 <style lang="scss" scoped>
 
 </style>
-
-<route lang="yaml">
-meta:
-  title: Home
-  layout: default
-</route>

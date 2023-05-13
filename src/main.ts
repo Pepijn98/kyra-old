@@ -1,3 +1,4 @@
+import { createPinia } from "pinia";
 import { setupLayouts } from "virtual:generated-layouts";
 import generatedRoutes from "virtual:generated-pages";
 import { ViteSSG } from "vite-ssg";
@@ -13,6 +14,7 @@ export const createApp = ViteSSG(
     App,
     { routes, base: import.meta.env.BASE_URL },
     (ctx) => {
+        ctx.app.use(createPinia());
         Object.values(import.meta.glob<{ install: UserModule }>("./modules/*.ts", { eager: true })).forEach((module) => module.install(ctx));
     }
 );

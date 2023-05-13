@@ -1,6 +1,6 @@
 <template>
     <div>
-        <h1>Index</h1>
+        <h1>Register</h1>
     </div>
 </template>
 
@@ -14,6 +14,6 @@
 
 <route lang="yaml">
 meta:
-  title: Home
+  title: Register
   layout: default
 </route>

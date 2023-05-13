@@ -1,6 +1,5 @@
 <template>
     <div>
-        <h1>Index</h1>
     </div>
 </template>
 
@@ -14,6 +13,6 @@
 
 <route lang="yaml">
 meta:
-  title: Home
-  layout: default
+  title: Images
+  layout: dashboard
 </route>
