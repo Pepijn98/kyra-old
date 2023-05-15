@@ -19,6 +19,7 @@ defineProps<{
 .logo {
     display: flex;
     justify-content: center;
+    margin-top: 15px;
 
     p {
         align-self: center;

@@ -11,7 +11,7 @@ import Logo from "./Logo.vue";
 <style lang="scss" scoped>
 .sidenav {
     height: 100%;
-    background-color: var(--secondary-button);
+    background-color: rgb(var(--secondary-button));
     border-radius: 0 20px 20px 0;
     transition: 0.5s;
 

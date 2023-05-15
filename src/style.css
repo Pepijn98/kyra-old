@@ -6,8 +6,8 @@
 
     --sidenav-width: 360px;
 
-    color: var(--primary);
-    background-color: var(--secondary);
+    color: rgb(var(--primary));
+    background-color: rgb(var(--secondary));
 
     font-synthesis: none;
     text-rendering: optimizeLegibility;
@@ -17,19 +17,21 @@
 }
 
 .dark {
-    --primary: #ffffff;
-    --secondary: #0e0f12;
-    --primary-button: #f5704b;
-    --secondary-button: #1a1d21;
-    --accent: #aabaf3;
+    --primary: 255, 255, 255;
+    --secondary: 14, 15, 18;
+    --tertiary: 26, 27, 30;
+    --primary-button: 245, 112, 75;
+    --secondary-button: 26, 29, 33;
+    --accent: 170, 186, 243;
 }
 
 .light {
-    --primary: #000000;
-    --secondary: #f1f0ed;
-    --primary-button: #f5704b;
-    --secondary-button: #e5e2de;
-    --accent: #aabaf3;
+    --primary: 0, 0, 0;
+    --secondary: 241, 240, 237;
+    --tertiary: 229, 228, 225;
+    --primary-button: 245, 112, 75;
+    --secondary-button: 229, 226, 222;
+    --accent: 170, 186, 243;
 }
 
 .visible {

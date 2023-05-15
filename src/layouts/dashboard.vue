@@ -52,7 +52,7 @@ function updateWidth(): void {
 }
 
 function updateSidenav(): void {
-    if (width.value <= 830) {
+    if (width.value <= 1200) {
         closeSidenav();
     } else {
         openSidenav();
@@ -74,5 +74,9 @@ onMounted(() => {
 <style lang="scss" scoped>
 main {
     display: flex;
+
+    .content {
+        padding: 0px 10px;
+    }
 }
 </style>
