@@ -1,7 +1,7 @@
 <template>
     <main>
-        <SideNav />
-        <div :style="{ 'width': `${contentWidth}px` }" class="content">
+        <SideNav :style="{ 'width': sidenavWidth }" />
+        <div :style="{ 'width': contentWidth }" class="content">
             <router-view />
         </div>
     </main>
@@ -10,13 +10,63 @@
 <script setup lang="ts">
 import SideNav from "~/components/SideNav.vue";
 
-const contentWidth = ref(0);
+const width = ref(window.innerWidth);
+const sidenavWidth = ref("30%");
+const contentWidth = ref("");
+
+function closeSidenav(): void {
+    const sidenav = document.querySelector<HTMLDivElement>(".sidenav");
+    if (!sidenav) {
+        return;
+    }
+
+    sidenavWidth.value = "0px";
+    sidenav.classList.remove("visible");
+    sidenav.classList.add("hidden");
+}
+
+function openSidenav(): void {
+    const sidenav = document.querySelector<HTMLDivElement>(".sidenav");
+    if (!sidenav) {
+        return;
+    }
+
+    sidenav.classList.remove("hidden");
+    sidenav.classList.add("visible");
+}
+
+function updateWidth(): void {
+    const sidenav = document.querySelector<HTMLDivElement>(".sidenav");
+    if (!sidenav) {
+        return;
+    }
+
+    if (width.value > 1200) {
+        sidenavWidth.value = "360px";
+    } else {
+        sidenavWidth.value = "30%";
+    }
+
+    contentWidth.value = `${width.value - sidenav.offsetWidth}px`;
+}
+
+function updateSidenav(): void {
+    if (width.value <= 830) {
+        closeSidenav();
+    } else {
+        openSidenav();
+    }
+}
 
 onMounted(() => {
-    const sidenav = document.querySelector<HTMLDivElement>(".sidenav");
-    if (sidenav) {
-        contentWidth.value = window.innerWidth - sidenav.offsetWidth;
-    }
+    updateWidth();
+    updateSidenav();
+
+    window.addEventListener("resize",  () => {
+        width.value = window.innerWidth;
+        updateWidth();
+        updateSidenav();
+    });
 });
 </script>
 
