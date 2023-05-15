@@ -11,7 +11,7 @@
 import SideNav from "~/components/SideNav.vue";
 
 const width = ref(window.innerWidth);
-const sidenavWidth = ref("30%");
+const sidenavWidth = ref("360px");
 const contentWidth = ref("");
 
 function closeSidenav(): void {
