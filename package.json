@@ -14,8 +14,11 @@
         "lint:fix": "eslint --ext .ts,.js,.vue . --fix"
     },
     "dependencies": {
+        "buffer": "^6.0.3",
+        "normalize.css": "^8.0.1",
         "nprogress": "^0.2.0",
         "pinia": "^2.0.36",
+        "pinia-plugin-persistedstate": "^3.1.0",
         "vue": "^3.3.2"
     },
     "devDependencies": {

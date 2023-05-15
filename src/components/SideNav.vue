@@ -10,6 +10,10 @@ import Logo from "./Logo.vue";
 
 <style lang="scss" scoped>
 .sidenav {
-    max-width: 360px;
+    width: var(--sidenav-width);
+    height: 100%;
+
+    background-color: var(--secondary-button);
+    border-radius: 0 20px 20px 0;
 }
 </style>

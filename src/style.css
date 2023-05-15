@@ -2,10 +2,12 @@
     font-family: Ubuntu, Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
     line-height: 1.5;
     font-weight: 400;
-
     color-scheme: light dark;
-    color: rgba(255, 255, 255, 0.87);
-    background-color: #242424;
+
+    --sidenav-width: 360px;
+
+    color: var(--primary);
+    background-color: var(--secondary);
 
     font-synthesis: none;
     text-rendering: optimizeLegibility;
@@ -14,9 +16,29 @@
     -webkit-text-size-adjust: 100%;
 }
 
-@media (prefers-color-scheme: light) {
-    :root {
-        color: #213547;
-        background-color: #ffffff;
-    }
+.dark {
+    --primary: #ffffff;
+    --secondary: #0e0f12;
+    --primary-button: #f5704b;
+    --secondary-button: #1a1d21;
+    --accent: #aabaf3;
+}
+
+.light {
+    --primary: #000000;
+    --secondary: #f1f0ed;
+    --primary-button: #f5704b;
+    --secondary-button: #e5e2de;
+    --accent: #aabaf3;
+}
+
+html,
+body,
+#app,
+#app>main {
+    height: 100%;
+}
+
+#app>main {
+    display: flex;
 }
