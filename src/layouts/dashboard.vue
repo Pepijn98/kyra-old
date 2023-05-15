@@ -15,12 +15,13 @@ const sidenavWidth = ref("360px");
 const contentWidth = ref("");
 
 function closeSidenav(): void {
+    sidenavWidth.value = "0px";
+
     const sidenav = document.querySelector<HTMLDivElement>(".sidenav");
     if (!sidenav) {
         return;
     }
 
-    sidenavWidth.value = "0px";
     sidenav.classList.remove("visible");
     sidenav.classList.add("hidden");
 }
@@ -36,15 +37,15 @@ function openSidenav(): void {
 }
 
 function updateWidth(): void {
-    const sidenav = document.querySelector<HTMLDivElement>(".sidenav");
-    if (!sidenav) {
-        return;
-    }
-
     if (width.value > 1200) {
         sidenavWidth.value = "360px";
     } else {
         sidenavWidth.value = "30%";
+    }
+
+    const sidenav = document.querySelector<HTMLDivElement>(".sidenav");
+    if (!sidenav) {
+        return;
     }
 
     contentWidth.value = `${width.value - sidenav.offsetWidth}px`;
