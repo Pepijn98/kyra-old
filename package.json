@@ -14,11 +14,16 @@
         "lint:fix": "eslint --ext .ts,.js,.vue . --fix"
     },
     "dependencies": {
+        "@fortawesome/fontawesome-svg-core": "^6.4.0",
+        "@fortawesome/free-brands-svg-icons": "^6.4.0",
+        "@fortawesome/free-regular-svg-icons": "^6.4.0",
+        "@fortawesome/free-solid-svg-icons": "^6.4.0",
+        "@fortawesome/vue-fontawesome": "^3.0.3",
         "buffer": "^6.0.3",
+        "element-plus": "^2.3.4",
         "normalize.css": "^8.0.1",
         "nprogress": "^0.2.0",
         "pinia": "^2.0.36",
-        "pinia-plugin-persistedstate": "^3.1.0",
         "vue": "^3.3.2"
     },
     "devDependencies": {
@@ -48,6 +53,7 @@
         "stylelint-scss": "^5.0.0",
         "typescript": "^5.0.4",
         "unplugin-auto-import": "^0.15.3",
+        "unplugin-element-plus": "^0.7.1",
         "unplugin-vue-components": "^0.24.1",
         "unplugin-vue-inspector": "^0.2.5",
         "vite": "^4.3.5",

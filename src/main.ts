@@ -1,15 +1,25 @@
+import { library } from "@fortawesome/fontawesome-svg-core";
+import { fab } from "@fortawesome/free-brands-svg-icons";
+import { far } from "@fortawesome/free-regular-svg-icons";
+import { fas } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 import { Buffer } from "buffer";
+import ElementPlus from "element-plus";
 import { createPinia } from "pinia";
 import { setupLayouts } from "virtual:generated-layouts";
 import generatedRoutes from "virtual:generated-pages";
 import { ViteSSG } from "vite-ssg";
 import { watch } from "vue";
 
+library.add(fab, fas, far);
+
 import App from "~/App.vue";
 import { type UserModule } from "~/types";
 
 import "normalize.css";
-import "~/style.css";
+import "~/styles/main.scss";
+import "~/styles/element.scss";
+import "~/styles/element-dark.scss";
 
 const routes = setupLayouts(generatedRoutes);
 
@@ -18,8 +28,12 @@ export const createApp = ViteSSG(
     { routes, base: import.meta.env.BASE_URL },
     (ctx) => {
         Object.values(import.meta.glob<{ install: UserModule }>("./modules/*.ts", { eager: true })).forEach((module) => module.install(ctx));
+
         const pinia = createPinia();
+
         ctx.app.use(pinia);
+        ctx.app.use(ElementPlus);
+        ctx.app.component("fa-icon", FontAwesomeIcon);
 
         if (ctx.isClient) {
             window.Buffer = Buffer;

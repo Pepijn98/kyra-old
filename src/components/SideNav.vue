@@ -1,22 +1,64 @@
 <template>
     <div class="sidenav">
-        <Logo :imgHeight="125" :imgWidth="125" :textSize="48" />
+        <Logo />
+        <div class="sidenav-actions">
+            <SideNavButton
+                :btnHeight="88"
+                :btnWidth="200"
+                :icon="['fas', 'user']"
+                :active="route.path.endsWith('/profile')">Profile</SideNavButton>
+
+            <SideNavButton
+                :btnHeight="88"
+                :btnWidth="200"
+                :icon="['fas', 'images']"
+                :active="route.path.endsWith('/images')">Images</SideNavButton>
+
+            <SideNavButton
+                :btnHeight="88"
+                :btnWidth="200"
+                :icon="['fas', 'file']"
+                :active="route.path.endsWith('/documents')">Documents</SideNavButton>
+
+            <el-divider :style="{ 'width': '250px', 'margin-right': 'auto', 'margin-left': 'auto' }" />
+
+            <SideNavButton
+                :btnHeight="88"
+                :btnWidth="200"
+                :icon="['fas', 'gear']"
+                :active="route.path.endsWith('/settings')">Settings</SideNavButton>
+
+            <SideNavButton
+                :btnHeight="88"
+                :btnWidth="200"
+                :icon="['fas', 'right-from-bracket']"
+                :active="false">Logout</SideNavButton>
+        </div>
     </div>
 </template>
 
 <script setup lang="ts">
 import Logo from "./Logo.vue";
+import SideNavButton from "./SideNavButton.vue";
+
+const route = useRoute();
 </script>
 
 <style lang="scss" scoped>
 .sidenav {
     height: 100%;
-    background-color: rgb(var(--secondary-button));
+    background-color: var(--el-bg-color-overlay);
     border-radius: 0 20px 20px 0;
-    transition: 0.5s;
+    display: flex;
+    flex-direction: column;
 
-    &.hidden > * {
-        display: none;
+    .sidenav-actions {
+        margin-top: auto;
+        margin-bottom: auto;
+
+        > :not(:first-child) {
+            margin-top: 25px;
+        }
     }
 }
 </style>

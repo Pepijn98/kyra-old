@@ -8,21 +8,20 @@
 <script setup lang="ts">
 import logo from "~/assets/logo.png?url";
 
-defineProps<{
-    imgHeight: number;
-    imgWidth: number;
-    textSize: number;
-}>();
+const imgHeight = ref(125);
+const imgWidth = ref(125);
+const textSize = ref(48);
 </script>
 
 <style lang="scss" scoped>
 .logo {
+    padding-top: 25px;
     display: flex;
     justify-content: center;
-    margin-top: 15px;
 
     p {
         align-self: center;
+        font-weight: bold;
     }
 }
 </style>

@@ -1,82 +1,26 @@
 <template>
-    <main>
-        <SideNav :style="{ 'width': sidenavWidth }" />
-        <div :style="{ 'width': contentWidth }" class="content">
-            <router-view />
-        </div>
-    </main>
+    <el-container>
+        <el-header v-if="isMobile"></el-header>
+        <el-container>
+            <el-aside v-if="!isMobile" width="360px">
+                <SideNav />
+            </el-aside>
+            <el-main>
+                <router-view />
+            </el-main>
+        </el-container>
+    </el-container>
 </template>
 
 <script setup lang="ts">
+import { useBreakpoints, breakpointsSematic } from "@vueuse/core";
+
 import SideNav from "~/components/SideNav.vue";
 
-const width = ref(window.innerWidth);
-const sidenavWidth = ref("360px");
-const contentWidth = ref("");
-
-function closeSidenav(): void {
-    sidenavWidth.value = "0px";
-
-    const sidenav = document.querySelector<HTMLDivElement>(".sidenav");
-    if (!sidenav) {
-        return;
-    }
-
-    sidenav.classList.remove("visible");
-    sidenav.classList.add("hidden");
-}
-
-function openSidenav(): void {
-    const sidenav = document.querySelector<HTMLDivElement>(".sidenav");
-    if (!sidenav) {
-        return;
-    }
-
-    sidenav.classList.remove("hidden");
-    sidenav.classList.add("visible");
-}
-
-function updateWidth(): void {
-    if (width.value > 1200) {
-        sidenavWidth.value = "360px";
-    } else {
-        sidenavWidth.value = "30%";
-    }
-
-    const sidenav = document.querySelector<HTMLDivElement>(".sidenav");
-    if (!sidenav) {
-        return;
-    }
-
-    contentWidth.value = `${width.value - sidenav.offsetWidth}px`;
-}
-
-function updateSidenav(): void {
-    if (width.value <= 1200) {
-        closeSidenav();
-    } else {
-        openSidenav();
-    }
-}
-
-onMounted(() => {
-    updateWidth();
-    updateSidenav();
-
-    window.addEventListener("resize",  () => {
-        width.value = window.innerWidth;
-        updateWidth();
-        updateSidenav();
-    });
-});
+const breakpoints = useBreakpoints(breakpointsSematic);
+const isMobile = breakpoints.smallerOrEqual("mobileL");
 </script>
 
 <style lang="scss" scoped>
-main {
-    display: flex;
 
-    .content {
-        padding: 0px 10px;
-    }
-}
 </style>

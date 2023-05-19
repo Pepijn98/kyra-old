@@ -10,10 +10,10 @@ export {}
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
     ImageCard: typeof import('./components/ImageCard.vue')['default']
-    KButton: typeof import('./components/KButton.vue')['default']
     Logo: typeof import('./components/Logo.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
     SideNav: typeof import('./components/SideNav.vue')['default']
+    SideNavButton: typeof import('./components/SideNavButton.vue')['default']
   }
 }
