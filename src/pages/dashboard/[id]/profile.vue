@@ -6,11 +6,11 @@
                 <div class="account-card">
                     <div :style="{ 'min-width': avatarWidth }" class="account-card__picture"></div>
                     <div class="account-card__content">
-                        <h2>{{ userStore.user!.username }}</h2>
-                        <p>{{ userStore.user!.email }}</p>
+                        <h2>{{ userStore.user?.username }}</h2>
+                        <p>{{ userStore.user?.email }}</p>
                         <p>{{ createdAt }}</p>
                         <div class="flex-wrap">
-                            <el-button class="btn-edit" @click="logout">Edit</el-button>
+                            <el-button class="btn-edit" @click="edit">Edit</el-button>
                         </div>
                     </div>
                 </div>
@@ -20,7 +20,7 @@
                 <div class="api-card">
                     <div class="api-card__content">
                         <p class="warning">Your token is very sensitive data, treat it as if it is your password. If anyone has access to your token they can upload, delete and manage your entire account.</p>
-                        <p><b>Your token:</b> {{ userStore.user!.token }}</p>
+                        <p><b>Your token:</b> {{ userStore.user?.token }}</p>
                         <div class="flex-wrap">
                             <el-button class="btn-reset" @click="reset">New Token</el-button>
                         </div>
@@ -39,10 +39,10 @@ const isDark = useDark({
     valueLight: "light",
 });
 const toggleDark = useToggle(isDark);
-const avatarWidth = ref("0px");
 
+const avatarWidth = ref("0px");
 const createdAt = computed(() => {
-    const date = new Date(userStore.user!.createdAt);
+    const date = new Date(userStore.user?.createdAt || "");
     return date.toUTCString();
 });
 
@@ -50,13 +50,13 @@ if (!userStore.isLoggedIn) {
     router.push("/dashboard/login");
 }
 
-function logout(): void {
-    userStore.removeUser();
-
-    router.push("/dashboard/login");
+function edit(e: PointerEvent): void {
+    useResetFocus(e);
 }
 
-function reset(): void {
+function reset(e: PointerEvent): void {
+    useResetFocus(e);
+
     toggleDark();
 }
 

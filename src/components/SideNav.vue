@@ -3,36 +3,26 @@
         <Logo />
         <div class="sidenav-actions">
             <SideNavButton
-                :btnHeight="88"
-                :btnWidth="200"
                 :icon="['fas', 'user']"
                 :active="route.path.endsWith('/profile')">Profile</SideNavButton>
 
             <SideNavButton
-                :btnHeight="88"
-                :btnWidth="200"
                 :icon="['fas', 'images']"
                 :active="route.path.endsWith('/images')">Images</SideNavButton>
 
             <SideNavButton
-                :btnHeight="88"
-                :btnWidth="200"
                 :icon="['fas', 'file']"
                 :active="route.path.endsWith('/documents')">Documents</SideNavButton>
 
             <el-divider :style="{ 'width': '250px', 'margin-right': 'auto', 'margin-left': 'auto' }" />
 
             <SideNavButton
-                :btnHeight="88"
-                :btnWidth="200"
                 :icon="['fas', 'gear']"
                 :active="route.path.endsWith('/settings')">Settings</SideNavButton>
 
             <SideNavButton
-                :btnHeight="88"
-                :btnWidth="200"
                 :icon="['fas', 'right-from-bracket']"
-                :active="false">Logout</SideNavButton>
+                @click="logout">Logout</SideNavButton>
         </div>
     </div>
 </template>
@@ -41,7 +31,14 @@
 import Logo from "./Logo.vue";
 import SideNavButton from "./SideNavButton.vue";
 
+const router = useRouter();
 const route = useRoute();
+const userStore = useUserStore();
+
+function logout(): void {
+    userStore.removeUser();
+    router.push("/dashboard/login");
+}
 </script>
 
 <style lang="scss" scoped>

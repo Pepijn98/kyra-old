@@ -28,6 +28,13 @@ html.light {
     }
 }
 
+.el-button:focus {
+    color: var(--el-button-text-color);
+    border-color: var(--el-button-border-color);
+    background-color: var(--el-button-bg-color);
+    outline: none;
+}
+
 html,
 body,
 #app,

@@ -17,9 +17,9 @@ import App from "~/App.vue";
 import { type UserModule } from "~/types";
 
 import "normalize.css";
-import "~/styles/main.scss";
 import "~/styles/element.scss";
 import "~/styles/element-dark.scss";
+import "~/styles/main.scss";
 
 const routes = setupLayouts(generatedRoutes);
 
