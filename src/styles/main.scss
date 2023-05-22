@@ -26,6 +26,10 @@ html.light {
             --el-button-hover-border-color: var(--el-color-primary);
         }
     }
+
+    .el-notification {
+        --el-notification-border-color: var(--el-button-bg-color);
+    }
 }
 
 .el-button:focus {

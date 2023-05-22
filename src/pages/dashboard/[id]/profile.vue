@@ -32,6 +32,9 @@
 </template>
 
 <script setup lang="ts">
+// @ts-expect-error ElNotification is suppose to be exported.
+import { ElNotification } from "element-plus";
+
 const router = useRouter();
 const userStore = useUserStore();
 const isDark = useDark({
@@ -52,12 +55,26 @@ if (!userStore.isLoggedIn) {
 
 function edit(e: PointerEvent): void {
     useResetFocus(e);
+
+    ElNotification({
+        title: "Coming Soon",
+        message: "This feature is coming soon.",
+        type: "warning",
+        duration: 0,
+    });
 }
 
 function reset(e: PointerEvent): void {
     useResetFocus(e);
 
     toggleDark();
+
+    ElNotification({
+        title: "Switched Theme",
+        message: "Switched to " + (isDark.value ? "dark" : "light") + " theme.",
+        type: "info",
+        duration: 3000,
+    });
 }
 
 onMounted(() => {
