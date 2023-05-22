@@ -21,6 +21,7 @@
         "@fortawesome/vue-fontawesome": "^3.0.3",
         "buffer": "^6.0.3",
         "element-plus": "^2.3.5",
+        "ky": "^0.33.3",
         "normalize.css": "^8.0.1",
         "nprogress": "^0.2.0",
         "pinia": "^2.1.3",

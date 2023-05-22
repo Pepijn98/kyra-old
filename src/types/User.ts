@@ -1,4 +1,4 @@
-import { ObjectValues } from "./General";
+import { type ObjectValues } from "./General";
 
 export const Role = {
     OWNER: 0,
