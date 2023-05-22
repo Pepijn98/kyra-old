@@ -9,7 +9,12 @@ export type ApiResponse = {
     data?: Record<string, unknown>;
 }
 
-export type UserResponse = ApiResponse & {
+// export type UserResponse = ApiResponse & {
+//     data: {
+//         user: User
+//     }
+// }
+export interface UserResponse extends ApiResponse {
     data: {
         user: User
     }
@@ -20,6 +25,14 @@ export type ErrorResponse = {
     statusMessage: string;
     message: string;
 }
+
+export function isApiResponse<T extends ApiResponse>(response: T | ErrorResponse): response is T {
+    return response.statusCode >= 200 && response.statusCode < 400;
+}
+
+// export function isErrorResponse<T extends ErrorResponse>(response: ApiResponse | T): response is T {
+//     return !(response.statusCode >= 200 && response.statusCode < 400);
+// }
 
 export class ApiService {
     api: typeof ky;

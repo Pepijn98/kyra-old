@@ -2,7 +2,6 @@ import Vue from "@vitejs/plugin-vue";
 import VueJsx from "@vitejs/plugin-vue-jsx";
 import path from "path";
 import AutoImport from "unplugin-auto-import/vite";
-import ElementPlus from "unplugin-element-plus/vite";
 import Components from "unplugin-vue-components/vite";
 import { defineConfig } from "vite";
 import Inspect from "vite-plugin-inspect";
@@ -25,9 +24,6 @@ export default defineConfig({
         Vue({
             include: [/\.vue$/, /\.tsx$/, /\.md$/],
         }),
-        ElementPlus({
-            useSource: true,
-        }),
         VueJsx(),
         Pages({
             extensions: ["vue", "tsx", "md"],
@@ -38,7 +34,7 @@ export default defineConfig({
                 "vue",
                 "vue-router",
                 "@vueuse/head",
-                "@vueuse/core",
+                "@vueuse/core"
             ],
             dts: "src/auto-imports.d.ts",
             dirs: [
@@ -89,9 +85,9 @@ export default defineConfig({
     ssgOptions: {
         script: "async",
         formatting: "minify",
-        crittersOptions: {
-            reduceInlineStyles: false,
-        },
+        // crittersOptions: {
+        //     reduceInlineStyles: false,
+        // },
         onFinished() { generateSitemap(); },
     }
 });

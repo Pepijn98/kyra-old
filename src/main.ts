@@ -4,7 +4,8 @@ import { far } from "@fortawesome/free-regular-svg-icons";
 import { fas } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 import { Buffer } from "buffer";
-import ElementPlus from "element-plus";
+// @ts-expect-error ID_INJECTION_KEY is expoted by element-plus but not in the types
+import ElementPlus, { ID_INJECTION_KEY } from "element-plus";
 import { createPinia } from "pinia";
 import { setupLayouts } from "virtual:generated-layouts";
 import generatedRoutes from "virtual:generated-pages";
@@ -30,6 +31,11 @@ export const createApp = ViteSSG(
         Object.values(import.meta.glob<{ install: UserModule }>("./modules/*.ts", { eager: true })).forEach((module) => module.install(ctx));
 
         const pinia = createPinia();
+
+        ctx.app.provide(ID_INJECTION_KEY, {
+            prefix: Math.floor(Math.random() * 10000),
+            current: 0
+        });
 
         ctx.app.use(pinia);
         ctx.app.use(ElementPlus);

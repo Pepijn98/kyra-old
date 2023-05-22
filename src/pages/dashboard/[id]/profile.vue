@@ -19,8 +19,12 @@
                 <h1 class="title">Api</h1>
                 <div class="api-card">
                     <div class="api-card__content">
-                        <p class="warning">Your token is very sensitive data, treat it as if it is your password. If anyone has access to your token they can upload, delete and manage your entire account.</p>
-                        <p><b>Your token:</b> {{ userStore.user?.token }}</p>
+                        <el-text class="warning" size="large" tag="b">Your token is very sensitive data, treat it as if it is your password. If anyone has access to your token they can upload, delete and manage your entire account.</el-text>
+                        <el-text class="token" size="large">
+                            <b>Your token: </b>
+                            <el-button v-if="!isRevealed" class="reveal-token" @click="isRevealed = true" type="primary" link>reveal token</el-button>
+                            <code v-if="isRevealed">{{ userStore.user?.token }}</code>
+                        </el-text>
                         <div class="flex-wrap">
                             <el-button class="btn-reset" @click="reset">New Token</el-button>
                         </div>
@@ -32,7 +36,7 @@
 </template>
 
 <script setup lang="ts">
-// @ts-expect-error ElNotification is suppose to be exported.
+// @ts-expect-error ElNotification is expoted by element-plus but not in the types
 import { ElNotification } from "element-plus";
 
 const router = useRouter();
@@ -43,6 +47,7 @@ const isDark = useDark({
 });
 const toggleDark = useToggle(isDark);
 
+const isRevealed = ref(false);
 const avatarWidth = ref("0px");
 const createdAt = computed(() => {
     const date = new Date(userStore.user?.createdAt || "");
@@ -166,11 +171,16 @@ onMounted(() => {
         padding: 15px;
 
         &__content {
+            width: inherit;
             display: flex;
             flex-direction: column;
 
             .warning {
                 margin-bottom: 15px;
+            }
+
+            .token {
+                align-self: flex-start;
             }
 
             h2, p {

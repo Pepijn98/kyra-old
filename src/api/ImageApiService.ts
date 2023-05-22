@@ -11,10 +11,12 @@ export default class ImageApiService extends ApiService {
         });
     }
 
+    // @ts-expect-error idc
     async post(file: File): Promise<void> {
 
     }
 
+    // @ts-expect-error idc
     async delete(id: string, filename: string): Promise<void> {
 
     }
