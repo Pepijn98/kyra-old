@@ -3,9 +3,9 @@
     "private": true,
     "version": "0.0.0",
     "scripts": {
-        "build": "nuxt build",
+        "build": "nuxt build --dotenv .env.development",
         "dev": "nuxt dev --dotenv .env.development",
-        "generate": "nuxt generate",
+        "generate": "nuxt generate --dotenv .env.production",
         "preview": "nuxt preview",
         "postinstall": "nuxt prepare",
         "clean": "pnpm clean:dist && pnpm clean:pkgs",
