@@ -1,0 +1,39 @@
+:root {
+    font-family: Ubuntu, Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+    line-height: 1.5;
+    font-weight: 400;
+
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-text-size-adjust: 100%;
+}
+
+html {
+    &.dark {
+        --sidenav-bg-color: var(--el-bg-color-overlay);
+    }
+
+    &.light {
+        --sidenav-bg-color: var(--el-bg-color-overlay);
+    }
+
+    --sidenav-bg-color: var(--el-bg-color-overlay);
+}
+
+body {
+    background-color: var(--el-bg-color);
+}
+
+a {
+    font-weight: 400;
+    color: var(--el-color-primary);
+}
+
+code {
+    color: var(--el-color-primary);
+    background-color: black;
+    padding-left: 1px;
+    padding-right: 1px;
+}
