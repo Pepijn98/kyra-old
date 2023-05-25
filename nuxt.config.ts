@@ -6,7 +6,7 @@ import { scope, appName, appDescription } from "./constants";
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-    ssr: false,
+    // ssr: false,
     app: {
         head: {
             title: appName,
@@ -43,6 +43,20 @@ export default defineNuxtConfig({
         "@fortawesome/fontawesome-svg-core/styles.css",
         "assets/styles/index.scss"
     ],
+    runtimeConfig: {
+        database: {
+            user: process.env.DB_USER,
+            password: process.env.DB_PASSWORD,
+            host: process.env.DB_HOST,
+            port: process.env.DB_PORT,
+            name: process.env.DB_NAME
+        }
+    },
+    nitro: {
+        plugins: [
+            "~/server/database/index.ts"
+        ]
+    },
     sourcemap: {
         server: true,
         client: true

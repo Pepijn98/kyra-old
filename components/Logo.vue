@@ -6,9 +6,20 @@
 </template>
 
 <script setup lang="ts">
-const imgHeight = ref(125);
-const imgWidth = ref(125);
-const textSize = ref(48);
+defineProps({
+    imgHeight: {
+        type: Number,
+        default: 125
+    },
+    imgWidth: {
+        type: Number,
+        default: 125
+    },
+    textSize: {
+        type: Number,
+        default: 48
+    }
+});
 </script>
 
 <style lang="scss" scoped>

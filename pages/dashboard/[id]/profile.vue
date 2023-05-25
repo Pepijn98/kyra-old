@@ -43,36 +43,37 @@
 <script setup lang="ts">
 import { ElNotification } from "element-plus";
 
-import { isApiResponse } from "~/api/ApiService";
-
 definePageMeta({
     title: "Profile",
     layout: "dashboard"
+});
+
+useSeoMeta({
+    title: "Profile",
+    description: "Manage your account."
 });
 
 const router = useRouter();
 const userStore = useUserStore();
 
 // Check if user is logged in
-if (!userStore.isLoggedIn) {
+if (!userStore.isLoggedIn || !userStore.user) {
     router.push("/dashboard/login");
 }
-
-const api = useApi();
 
 // Get user data
-const resp = await api.auth.me();
-if (isApiResponse(resp)) {
-    userStore.addUser(resp.data.user);
-} else {
-    router.push("/dashboard/login");
-    ElNotification({
-        title: resp.statusMessage,
-        message: resp.message,
-        type: "error",
-        duration: 5000,
-    });
-}
+// const resp = await api.auth.me();
+// if (isApiResponse(resp)) {
+//     userStore.addUser(resp.data.user);
+// } else {
+//     router.push("/dashboard/login");
+//     ElNotification({
+//         title: resp.statusMessage,
+//         message: resp.message,
+//         type: "error",
+//         duration: 5000,
+//     });
+// }
 
 // const isDark = useDark({
 //     valueDark: "dark",
@@ -100,28 +101,28 @@ function edit(): void {
 }
 
 async function reset(): Promise<void> {
-    if (!api.user) return;
-    if (!userStore.user) return;
+    // if (!api.user) return;
+    // if (!userStore.user) return;
 
-    const resp = await api.user.resetToken(userStore.user.id);
-    if (isApiResponse(resp)) {
-        console.log(resp.data.token);
-        userStore.updateToken(resp.data.token);
-        ElNotification({
-            title: resp.statusMessage,
-            message: resp.message,
-            type: "success",
-            duration: 5000,
-        });
-        return;
-    }
+    // const resp = await api.user.resetToken(userStore.user.id);
+    // if (isApiResponse(resp)) {
+    //     console.log(resp.data.token);
+    //     userStore.updateToken(resp.data.token);
+    //     ElNotification({
+    //         title: resp.statusMessage,
+    //         message: resp.message,
+    //         type: "success",
+    //         duration: 5000,
+    //     });
+    //     return;
+    // }
 
-    ElNotification({
-        title: resp.statusMessage,
-        message: resp.message,
-        type: "error",
-        duration: 5000,
-    });
+    // ElNotification({
+    //     title: resp.statusMessage,
+    //     message: resp.message,
+    //     type: "error",
+    //     duration: 5000,
+    // });
 }
 
 onMounted(() => {

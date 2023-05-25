@@ -15,10 +15,12 @@ useHead({
     title: appName
 });
 
-const prefersDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
-const setting = localStorage.getItem("vueuse-color-scheme") || "auto";
-if (setting === "dark" || (prefersDark && setting !== "light")) {
-    document.documentElement.classList.toggle("dark", true);
+if (process.client) {
+    const prefersDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+    const setting = localStorage.getItem("vueuse-color-scheme") || "auto";
+    if (setting === "dark" || (prefersDark && setting !== "light")) {
+        document.documentElement.classList.toggle("dark", true);
+    }
 }
 
 const user = useUserStore();
@@ -36,9 +38,7 @@ watch(
     (state) => {
         localStorage.setItem("user", Buffer.from(JSON.stringify(state.user)).toString("base64"));
     },
-    {
-        deep: true
-    }
+    { deep: true }
 );
 </script>
 
