@@ -15,8 +15,6 @@
 <script setup lang="ts">
 import { breakpointsSematic } from "@vueuse/core";
 
-import SideNav from "~/components/SideNav.vue";
-
 const breakpoints = useBreakpoints(breakpointsSematic);
 const isMobile = breakpoints.smallerOrEqual("mobileL");
 </script>

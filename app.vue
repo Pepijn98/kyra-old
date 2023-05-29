@@ -12,7 +12,7 @@ import { appName } from "~/constants";
 import { useUserStore } from "~/stores/user";
 
 useHead({
-    title: appName
+    title: appName,
 });
 
 if (process.client) {

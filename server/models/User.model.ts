@@ -1,9 +1,10 @@
 import { type Document, Schema, model } from "mongoose";
 
-import type { User, UserData } from "~~/types/user";
+import type { User, UserData } from "~/types/user";
 
 
 type UserModel = UserData & Document & {
+    /** Remove password and __v from user object and modify _id to id */
     cleanUser(): User
 };
 
@@ -13,9 +14,10 @@ const UserSchema = new Schema<UserModel>({
     password: { type: String, required: true },
     token: { type: String, required: true },
     role: { type: Number, required: true, min: 0, max: 2, default: 2 },
-    createdAt: { type: Date, required: true }
+    createdAt: { type: Date, required: true },
 });
 
+// Remove password and __v from user object and modify _id to id
 UserSchema.methods.cleanUser = function (): User {
     return {
         id: this._id,
@@ -23,7 +25,7 @@ UserSchema.methods.cleanUser = function (): User {
         username: this.username,
         token: this.token,
         role: this.role,
-        createdAt: this.createdAt
+        createdAt: this.createdAt,
     };
 };
 

@@ -11,8 +11,8 @@
         "clean": "pnpm clean:dist && pnpm clean:pkgs",
         "clean:dist": "rimraf ./dist",
         "clean:pkgs": "rimraf ./node_modules ./pnpm-lock.yaml",
-        "lint": "eslint --ext .ts,.js,.vue .",
-        "lint:fix": "eslint --ext .ts,.js,.vue . --fix"
+        "lint": "eslint --ext .ts,.js,.vue",
+        "lint:fix": "eslint --ext .ts,.js,.vue --fix"
     },
     "dependencies": {
         "@fortawesome/fontawesome-svg-core": "^6.4.0",
@@ -25,6 +25,7 @@
         "@vueuse/head": "^1.1.26",
         "bcrypt": "^5.1.0",
         "buffer": "^6.0.3",
+        "jsonwebtoken": "^9.0.0",
         "ky": "^0.33.3",
         "md5": "^2.3.0",
         "mongoose": "^7.2.1",
@@ -41,6 +42,7 @@
         "@nuxt/devtools": "^0.5.3",
         "@nuxt/types": "^2.16.3",
         "@types/bcrypt": "^5.0.0",
+        "@types/jsonwebtoken": "^9.0.2",
         "@types/md5": "^2.3.2",
         "@types/multer": "^1.4.7",
         "@types/node": "^18",
@@ -66,7 +68,6 @@
         "stylelint-scss": "^5.0.0",
         "typescript": "^5.0.4",
         "unplugin-auto-import": "^0.16.2",
-        "unplugin-vue-components": "^0.24.1",
         "unplugin-vue-inspector": "^0.2.5",
         "vite-plugin-eslint": "^1.8.1",
         "vue-eslint-parser": "^9.3.0"

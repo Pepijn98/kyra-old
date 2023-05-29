@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 import { Nitro } from "nitropack";
 
-import { RuntimeConfig } from "~~/types/general";
+import { RuntimeConfig } from "~/types/general";
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 export default async (_nitroApp: Nitro): Promise<void> => {
